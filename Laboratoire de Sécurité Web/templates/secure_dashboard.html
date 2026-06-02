@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="lab-header safe-card">
+    <h1>Tableau de bord sécurisé</h1>
+    <p>Connecté en tant que {{ user['username'] }}. Cette partie implémente les correctifs des routes vulnérables.</p>
+    <div class="actions">
+        <a class="btn" href="{{ url_for('secure_profile') }}?id={{ user['id'] }}">Mon profil</a>
+        <a class="btn" href="{{ url_for('secure_search') }}">Rechercher mes modules</a>
+        <a class="btn" href="{{ url_for('secure_upload') }}">Uploader un fichier</a>
+        {% if session.get('role') == 'admin' %}<a class="btn" href="{{ url_for('secure_admin') }}">Panneau admin</a>{% endif %}
+    </div>
+</section>
+<section class="grid two">
+    <div class="card">
+        <h2>Mes modules</h2>
+        <table>
+            <thead><tr><th>Code</th><th>Titre</th><th>Note</th></tr></thead>
+            <tbody>{% for c in courses %}<tr><td>{{ c['code'] }}</td><td>{{ c['title'] }}</td><td>{{ c['grade'] }}</td></tr>{% endfor %}</tbody>
+        </table>
+    </div>
+    <div class="card safe-card">
+        <h2>Commentaires des étudiants</h2>
+        <form method="post" action="{{ url_for('secure_comment') }}">
+            <textarea name="body" maxlength="500" placeholder="Ici, le HTML est échappé et ne s'exécute pas."></textarea>
+            <button class="btn" type="submit">Publier le commentaire</button>
+        </form>
+        <div class="comments">
+            {% for c in comments %}
+                <div class="comment"><strong>{{ c['username'] }}</strong> : {{ c['body'] }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

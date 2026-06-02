@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card safe-card">
+    <h1>Panneau administrateur sécurisé</h1>
+    <p>Le contrôle d'accès basé sur les rôles est appliqué. Les mots de passe ne sont jamais affichés.</p>
+    <h2>Utilisateurs</h2>
+    <table>
+        <thead><tr><th>ID</th><th>Nom d'utilisateur</th><th>Rôle</th><th>Nom</th><th>Email</th></tr></thead>
+        <tbody>{% for u in users %}<tr><td>{{ u['id'] }}</td><td>{{ u['username'] }}</td><td>{{ u['role'] }}</td><td>{{ u['full_name'] }}</td><td>{{ u['email'] }}</td></tr>{% endfor %}</tbody>
+    </table>
+    <h2>Journaux de sécurité</h2>
+    <table>
+        <thead><tr><th>Événement</th><th>Utilisateur</th><th>IP</th><th>Détails</th><th>Date</th></tr></thead>
+        <tbody>{% for l in logs %}<tr><td>{{ l['event_type'] }}</td><td>{{ l['username'] }}</td><td>{{ l['ip_address'] }}</td><td>{{ l['details'] }}</td><td>{{ l['created_at'] }}</td></tr>{% endfor %}</tbody>
+    </table>
+</section>
+{% endblock %}

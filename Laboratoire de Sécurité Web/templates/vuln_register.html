@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card danger-card narrow">
+    <h1>Inscription vulnérable</h1>
+    <p>Pour la démonstration, cette version stocke le mot de passe en clair dans la colonne password_plain.</p>
+    <form method="post">
+        <label>Nom d'utilisateur</label><input name="username" required>
+        <label>Mot de passe</label><input name="password" type="password" required>
+        <label>Nom complet</label><input name="full_name" required>
+        <label>Email</label><input name="email" type="email" required>
+        <label>Bio</label><textarea name="bio"></textarea>
+        <button class="btn danger" type="submit">S'inscrire</button>
+    </form>
+</section>
+{% endblock %}

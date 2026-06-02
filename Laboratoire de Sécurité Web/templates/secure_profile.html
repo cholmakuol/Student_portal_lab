@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card safe-card">
+    <h1>Profil sécurisé</h1>
+    <p>L'autorisation au niveau objet est appliquée. Un étudiant ne peut afficher que son propre profil.</p>
+    <table>
+        <tr><th>ID</th><td>{{ profile['id'] }}</td></tr>
+        <tr><th>Nom d'utilisateur</th><td>{{ profile['username'] }}</td></tr>
+        <tr><th>Rôle</th><td>{{ profile['role'] }}</td></tr>
+        <tr><th>Nom complet</th><td>{{ profile['full_name'] }}</td></tr>
+        <tr><th>Email</th><td>{{ profile['email'] }}</td></tr>
+        <tr><th>Bio</th><td>{{ profile['bio'] }}</td></tr>
+    </table>
+    <h2>Modules</h2>
+    <table>
+        <thead><tr><th>Code</th><th>Titre</th><th>Note</th></tr></thead>
+        <tbody>{% for c in courses %}<tr><td>{{ c['code'] }}</td><td>{{ c['title'] }}</td><td>{{ c['grade'] }}</td></tr>{% endfor %}</tbody>
+    </table>
+</section>
+{% endblock %}

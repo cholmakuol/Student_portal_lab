@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or "Laboratoire de Sécurité Web du Portail Étudiant" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand"><a href="{{ url_for('index') }}">Laboratoire de Sécurité Web</a></div>
+    <nav>
+        <a href="{{ url_for('index') }}">Accueil</a>
+        <a href="{{ url_for('vuln_login') }}">Mode vulnérable</a>
+        <a href="{{ url_for('secure_login') }}">Mode sécurisé</a>
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('logout') }}">Déconnexion {{ session.get('username') }}</a>
+        {% endif %}
+    </nav>
+</header>
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <section class="flash-wrap">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </section>
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</main>
+<footer class="footer">
+    Projet de fin d'études, EST Guelmim. Spécialité : Sécurité Informatique et Réseau. Réalisé par Chol Makuol Garang Thok. Laboratoire éducatif local uniquement. Ne pas déployer les routes vulnérables en public.
+</footer>
+</body>
+</html>

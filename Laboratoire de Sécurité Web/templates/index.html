@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <h1>Projet de Fin d'Études en Sécurité des Applications Web</h1>
+    <p>Cette application contient deux versions complètes du même portail étudiant : une version volontairement vulnérable pour les tests en laboratoire, et une version sécurisée pour démontrer la remédiation.</p>
+    <div class="grid two">
+        <div class="card danger-card">
+            <h2>Mode vulnérable</h2>
+            <p>Utilisez cette partie pour démontrer l'injection SQL, le XSS stocké, l'IDOR, le contrôle d'accès cassé, le stockage faible des mots de passe et l'upload de fichiers non sécurisé.</p>
+            <a class="btn danger" href="{{ url_for('vuln_login') }}">Ouvrir le mode vulnérable</a>
+        </div>
+        <div class="card safe-card">
+            <h2>Mode sécurisé</h2>
+            <p>Utilisez cette partie pour montrer les requêtes paramétrées, le hachage des mots de passe, l'autorisation par objet, la validation d'upload, les journaux d'audit et les en-têtes de sécurité.</p>
+            <a class="btn" href="{{ url_for('secure_login') }}">Ouvrir le mode sécurisé</a>
+        </div>
+    </div>
+</section>
+<section class="card">
+    <h2>Informations du projet</h2>
+    <table>
+        <tr><th>Établissement</th><td>EST Guelmim</td></tr>
+        <tr><th>Titre</th><td>Conception, audit de sécurité et remédiation d'une application web basée sur OWASP Top 10</td></tr>
+        <tr><th>Réalisé par</th><td>Chol Makuol Garang Thok</td></tr>
+        <tr><th>Spécialité</th><td>Sécurité Informatique et Réseau</td></tr>
+        <tr><th>Objectif</th><td>Identifier, exploiter en environnement contrôlé, corriger et vérifier les vulnérabilités web courantes.</td></tr>
+    </table>
+</section>
+<section class="card">
+    <h2>Comptes de démonstration</h2>
+    <table>
+        <thead><tr><th>Mode</th><th>Nom d'utilisateur</th><th>Mot de passe</th><th>Rôle</th></tr></thead>
+        <tbody>
+        <tr><td>Vulnérable</td><td>admin</td><td>admin123</td><td>admin</td></tr>
+        <tr><td>Vulnérable</td><td>chol</td><td>chol123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>youssef</td><td>youssef123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>mustapha</td><td>mustapha123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>yassine</td><td>yassine123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>abderrahmane</td><td>abderrahmane123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>abdelkhalk</td><td>abdelkhalk123</td><td>étudiant</td></tr>
+        <tr><td>Vulnérable</td><td>soulaimane</td><td>soulaimane123</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>admin</td><td>Admin@12345</td><td>admin</td></tr>
+        <tr><td>Sécurisé</td><td>chol</td><td>Chol@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>youssef</td><td>Youssef@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>mustapha</td><td>Mustapha@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>yassine</td><td>Yassine@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>abderrahmane</td><td>Abderrahmane@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>abdelkhalk</td><td>Abdelkhalk@12345</td><td>étudiant</td></tr>
+        <tr><td>Sécurisé</td><td>soulaimane</td><td>Soulaimane@12345</td><td>étudiant</td></tr>
+        </tbody>
+    </table>
+</section>
+{% endblock %}
